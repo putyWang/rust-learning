@@ -40,6 +40,15 @@
       - 默认安装使用的 x86_64-pc-windows-msvc 与 MinGW64  使用的gnu不一致，需要修改为 x86_64-pc-windows-gnu；
       - 其他选项根据自己需求修改；
     - 安装完毕后使用rustc --version 验证是否安装成功；
+- 配置开发软件（vscode）
+  - 插件
+    - rust-analyzer： 实时编译和分析 Rust 代码，提示错误，同时对类型进行标注 ；
+    - Rust：Rust语言服务器；
+    - rust syntax： 为代码提供语法高亮 ；
+    - crates：依赖分析；
+    - better toml： Rust 使用 toml 做项目的配置管理 ；
+    - rust test lens： 快速运行 Rust 测试 ；
+    - Tabnine：基于 AI 的自动补全，可以帮助你更快地撰写代码； 
 
 ### 2.项目的创建
 
