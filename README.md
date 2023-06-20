@@ -175,7 +175,7 @@
 
 ### 3.基础知识
 
-#### [3.1 变量](/blob/main/hello-world/main.rs)
+#### [3.1 变量](#hello-world)
 
 - 
 
