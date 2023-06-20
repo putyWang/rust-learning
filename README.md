@@ -173,5 +173,9 @@
   registry = "git://mirrors.ustc.edu.cn/crates.io-index"
   ```
 
-### 3.
+### 3.基础知识
+
+#### [3.1 变量](#/hello-world/main.rs)
+
+- 
 
