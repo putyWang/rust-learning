@@ -15,7 +15,6 @@ fn main() {
         println!("The value of x is: {x}");
         //作用域结束后 结束对 x = "1321321" 值的隐藏
     }
-
     // x 未用 mut修饰时，x = 6 重新赋值编译时报错 cannot assign twice to immutable variable `x`
     // x = 6;
     println!("The value of x is: {x}");
