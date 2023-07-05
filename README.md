@@ -178,7 +178,7 @@
 
 ### 3.基础知识
 
-#### [3.1 变量](./foundation/variable/src)
+#### [3.1 变量](./foundation/variable/src/main.rs)
 
 - 使用 let 关键字进行申明（但不可被二次赋值）；
 - 使用 mut 关键字修饰的变量可被二次赋值；
@@ -194,7 +194,7 @@
   - 在变量的作用域结束后，才会结束对之前变量的隐藏；
   - 隐藏实际上相当于创建新变量，申明变量类型可以与之前不一致；
 
-#### [3.2 数据类型](./foundation/data_type/src)
+#### [3.2 数据类型](./foundation/data_type/src/main.rs)
 
 - **标量**（*scalar*）代表一个单独的值；
 
@@ -262,7 +262,7 @@
       - 使用索引对数据进行访问（数组名[index]， index 索引是从0开始）；
       - 访问无效的索引时会直接抛出异常；
 
-#### [3.2 函数](./foundation/function/src)
+#### [3.2 函数](./foundation/function/src/main.rs)
 
 - 声明
   - 使用 fn 关键字对函数进行声明；
@@ -277,7 +277,7 @@
     - **表达式**（*Expressions*）计算并产生一个值；
     - 表达式结尾不能以分号（;）结尾表示该列产生为返回值
 
-#### [3.3 控制流](./foundation/control_stream/src)
+#### [3.3 控制流](./foundation/control_stream/src/main.rs)
 
 - **if 表达式**
   - 以 `if` 关键字开头，然后跟一个条件；
@@ -303,7 +303,7 @@
 
 ### 4.所有权
 
-#### [4.1 基础定义](./scope/base/src)
+#### [4.1 基础定义](./scope/base/src/main.rs)
 
 - 基础规则
   - Rust 中的每一个值都有一个 **所有者**（*owner*）；
@@ -343,3 +343,6 @@
   - 当出现移动的情况时，程序编译出错（borrow of moved value: `s`）提示你这个地方产生了移动，需要你使用clone的方式进行传参；
   - 实现copy的类型采取的就是拷贝的方式；
   - 函数返回值采取的是移动的方式返回给调用它的函数；
+
+#### [4.2 引用与借用](./scope/references_and_borrowing/src/main.rs)
+
