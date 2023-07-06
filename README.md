@@ -382,4 +382,11 @@
 
 -  *slice* 允许引用**集合中一段连续的元素序列**，而不用引用整个集合；
 - **字符串slice**
-  - 
+  - **字符串 slice**（*string slice*）是 `String` 中一部分值的引用，声明写做 &str；
+  - &字符串变量名[startIndex..endIndex] 表示从该变量从startIndex到endIndex的局部引用；
+  - 字符串 slice 引用包含startIndex，不包含endIndex；
+  - 当 startIndex 为0时，可以省略，直接使用[..endIndex]表示从0到endIndex的局部引用；
+  - 当endIndex 表示到 String 的结尾，endIndex 也可被省略；
+  - 源数据出现任意改变时候会导致该数据绑定的 字符串slice 失效；
+  - 字符串字面量数据类型实际上就是 字符串slice；
+  - 对字符串的引用 相当于 对字符串的全量 slice；
