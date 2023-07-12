@@ -20,6 +20,7 @@ impl User {
 }
 
 impl User {
+    // new 方法使用 pub 修饰 因此可以访问
     pub fn new (username:&String, adress:&String, active:bool) -> Self {
         Self{
             username: username.to_string(),
@@ -30,7 +31,7 @@ impl User {
 }
 
 // 使用pub修饰的枚举可以访问
-pub enum IsActive (
+pub enum IsActive {
     Enable,
     NotEnable
-)
+}
