@@ -508,3 +508,65 @@
   - 使用cargo 引入的外部包时，使用 **包名::引入对象** 的方式引入指定对象；
   - 在引用的对象具有通用前缀时，使用 **use 通用前缀::{对象1,对象2...} 嵌套路径** 的方式合并多条 use 语句；
   - 使用  *** ，glob 运算符** 可以将一个路径下 **所有** 公有项引入作用域；
+
+### 8. 集合
+
+#### [8.1 vector](./collection/vector/src/main.rs)
+
+- vector 中的数据使用 **Option** 枚举进行包装；
+- 新建
+  - vector 对象的结构体名为 **Vec** ；
+  - 创建时使用 Vec 中的 **new()** 关联函数进行创建；
+  - 由于 Vec 需要确定其中元素的数据类型，因此需要通过 **Vec<数据类型>** 的方式声明元素数据类型；
+  - 使用 **vec!宏** 可以创建对应值的 Vector 对象；
+  - 在使用 **vec!宏** 时，程序可以通过值推断类型；
+- 操作 vector 元素
+  - 当后续需要对 vector 对象进行修改时，定义时使用 **mut** 进行修饰；
+  - 使用 **remove(index)** 方法移除 vector 对象中index对应数据；
+  - 使用 **push(数据)** 方法向 vector 对象尾部添加数据；
+  - 使用 **pop()** 方法弹出 vector 对象；
+  - 使用 **get(index)** 获取指定index中的数据；
+  - 由于 vector 中的元素使用 Option 枚举进行包装，因此当get 方法中index 超出界限，数据值为 **Option::None**；
+  - 除了使用 **get** 方法获取对应数据，还可以使用 **&v[index]** 的方式直接获取对象数据的引用，而**不是Option包装**数据；
+  - 使用 **&v[index]** 方式时index 超出界限时导致报错；
+  - 使用 **&v[index]** 方式其实是借用整个 vec 对象，任何 **vector的修改** 将会导致 引用失效；
+  - 使用 **for 元素名 in &对象名** 遍历整个对象；
+  - 在丢弃 vector 对象时， 所有其内容也会被丢弃 ；
+
+#### [8.2 String](./collection/string/src/main.rs)
+
+- String 是一个对 **Vec<u8>** （元素为 utf-8 的 Vec 结构体）的封装；
+- 由于字符串索引应该返回的类型是不明确的，可以为**字节值**、**字符**、**字形簇**或**字符串 slice**， 因此 Rust 不允许使用索引获取 `String` 字符；
+- 新建
+  - String 对象的结构体名为 **String** ；
+  - 使用 String 中的 **new()** 关联函数进行创建**空字符串**；
+  - 使用 String 中的 **from(字符串字面量)** 关联函数进行创建 **指定字面值** 的字符串；
+  - 使用 **字符串字面量.to_string()** 也能创建 **指定字面值** 的字符串；
+- 修改
+  - 使用 **push_str(字符串字面量)** 方法将 字符串字面量 添加到对象后面；
+  - 使用 **push(字符)** 方法将字符拼接至 字符串 之后；
+  - 使用 **字符串名 + &字符串名** 拼接字符串；
+  - 在使用 **+ 运算符** 之后，第一个字符串变量由于移动将会失效；
+  - 使用 **format! 宏** 可以根据需求拼接多个字符串；
+  - **format! 宏** 中宏与 **println! 宏** 的格式一致；
+- 字符串的遍历
+  - 字符串遍历之前之前需要使用 **chars()**、**bytes()** 等方法获取对应数组，然后对数组进行遍历以获取对应参数；
+
+#### [8.3 map](./collection/map/src/main.rs)
+
+- HashMap 默认使用一种叫做 **SipHash** 的哈希函数；
+- 新建
+  - 由于HashMap没有被 prelude 自动引用，因此在使用时需要通过 **use std::collections::HashMap; ** 引入 hashMap 对应结构体；
+  - 使用 HashMap 中的 **new()** 关联函数进行创建 **空Map**；
+  - 在创建 HashMap 时，可以通过声明变量类型为 **HashMap<key数据类型，value数据类型>** 显示声明对应数据类型；
+  - 在创建 HashMap 时，未声明数据 key 与 value 数据类型时，程序通过 **第一次往 HashMap 对象里插入的数据** 推断其数据类型；
+- 操作map对象
+  - 使用 **get(key)** 方法获取使用 **Option 枚举包装的value对象**；
+  - 当 key 不存在时，获取的值为 **Option::None**;
+  - 使用 **for (key, value) in HashMap对象** 来遍历指定hashMap 对象中 key，value 值；
+  - 使用 **insert(key, value)** 向map中添加参数；
+  - 在 HashMap 对象中，使用 **insert(已存在指定 key 值, 新value)** 时将会 **替换** 指定 key值对应的value；
+  - 使用 **entry(key).or_insert(value)** 方法，先判断 map 对象中是否存在 key ，如果不存在的话插入 (key, value)；
+  - **entry(key)** 方法的返回值是一个 **Entry 枚举**，代表了可能存在也可能不存在的值；
+  - Entry 枚举 的 **or_insert(value) 方法** 在键对应的值存在时就返回这个值的可变引用，不存在则将 value 作为新值插入并返回新值的可变引用；
+  - 由于 **entry(key).or_insert(value)** 返回值为一个可变引用，因此修改该引用会导致该value值的改变；
