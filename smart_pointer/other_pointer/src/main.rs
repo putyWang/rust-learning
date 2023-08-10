@@ -38,8 +38,8 @@ fn test_ref_cell(){
     // 创建指向 a 的不可变 RefCell 指针
     let ref_cell = RefCell::new(vec![]);
     // 使用 ref 的 borrow_mut() 获取到封装值的可变引用
-    // 可以对 对应的对象进行修改
     let mut a = ref_cell.borrow_mut();
+    // 可以对 对应的对象进行修改
     a.push(1);
     a.push(2);
 
